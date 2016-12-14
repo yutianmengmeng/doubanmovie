@@ -1,0 +1,9 @@
+node_modules
+bower_components
+notes.md
+in_theaters
+top250
+coming_soon
+crossdomain
+data.json
+npm-debug.log
