@@ -11,11 +11,11 @@
         });
       }]);
 
-      module.controller('MovieListController', ["$scope","$route","$routeParams","HttpService",
-          function($scope,$route,$routeParams,HttpService) {
+      module.controller('MovieListController', ["$scope","$route","$routeParams","HttpService","Appconfig",
+          function($scope,$route,$routeParams,HttpService,Appconfig) {
               //设置分页功能
               var page=parseInt($routeParams.page);
-              var count=8;
+              var count=Appconfig.pagesize;
               var start=(page-1)*count;
             //console.log(data[0]);
             ////console.log(data.title);
@@ -27,9 +27,10 @@
           $scope.totalCount=0;
           $scope.totalpages=0;
           $scope.currentpage=page;
-          $scope.title='';
+          $scope.title="Loading....";
           //console.log(111);
-          HttpService.jsonp("http://api.douban.com/v2/movie/"+$routeParams.category,{start:start,count:count},function(data){
+          HttpService.jsonp(Appconfig.listApiAddress+$routeParams.category,
+              {start:start,count:count,q:$routeParams.q },function(data){
               //console.log(data.subjects);
               $scope.title=data.title;
               $scope.subjects=data.subjects;

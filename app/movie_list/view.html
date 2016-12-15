@@ -1,11 +1,11 @@
-<h1 class="page-header" ng-show="!loading"> {{title}}</h1>
+<h1 class="page-header"> {{title}}</h1>
 <h2 ng-if="message">{{message}}</h2>
 <div class="list-group">
-    <a ng-repeat="item in subjects" href="#" class="list-group-item">
+    <a ng-repeat="item in subjects" href="#/detail/{{item.id}}" class="list-group-item">
         <span class="badge">{{item.rating.average}}</span>
         <div class="media">
             <div class="media-left">
-                <img class="media-object" ng-src="{{item.images.small}}" alt="item.title" height="128">
+                <img class="media-object" ng-src="{{item.images.small}}" alt="item.title" height="128" width="83">
             </div>
             <div class="media-body">
                 <h3 class="media-heading">{{item.title}}</h3>
